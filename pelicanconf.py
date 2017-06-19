@@ -8,7 +8,7 @@ SITEURL = ''
 
 PATH = 'content'
 
-TIMEZONE = 'Europe/Paris'
+TIMEZONE = 'Europe/Amsterdam'
 
 DEFAULT_LANG = 'en'
 
@@ -32,6 +32,11 @@ SOCIAL = (('You can add links in your config file', '#'),
 DEFAULT_PAGINATION = False
 
 # Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
+# RELATIVE_URLS = True
 
-THEME = "../pelican-themes/basic"
+THEME = 'themes/mineral'
+
+# themes
+ABOUT_PAGE = '/pages/about.html'
+GITHUB_USERNAME = 'emiel'
+SITESUBTITLE = 'By Emiel van de Laar'

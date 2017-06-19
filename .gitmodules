@@ -1,0 +1,3 @@
+[submodule "themes/mineral"]
+	path = themes/mineral
+	url = git@github.com:emiel/mineral-theme.git
