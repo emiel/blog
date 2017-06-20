@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = 'Emiel van de Laar'
 SITENAME = 'Galloping Alligator'
-SITEURL = ''
+SITEURL = 'http://emiel.github.io'
 
 PATH = 'content'
 
@@ -36,7 +36,11 @@ DEFAULT_PAGINATION = False
 
 THEME = 'themes/mineral'
 
-# themes
-ABOUT_PAGE = '/pages/about.html'
-GITHUB_USERNAME = 'emiel'
+# Pelican theme settings
+
 SITESUBTITLE = 'By Emiel van de Laar'
+DISPLAY_PAGES_ON_MENU = False
+DISPLAY_CATEGORIES_ON_MENU = False
+
+# ABOUT_PAGE = '/pages/about.html'
+# themes
