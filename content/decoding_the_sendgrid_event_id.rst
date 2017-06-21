@@ -6,10 +6,11 @@ Decoding the SendGrid event ID
 :category: tech
 :authors: Emiel van de Laar
 
-SendGrid_ is a managed email delivery service. A webhook_ is offered which can
-notify you when interesting events happen while processing your email. The
-webhook will POST JSON encoded events to a URL of your choice. Each event
-includes an unique identifier and is the topic of this post.
+SendGrid_ is a managed email delivery service. The service is able to emit
+notifications (via a webhook_) when something interesting happens while
+processing your email. When enabled, the webhook will POST a collection of JSON
+encoded events to a URL of your choice. Each event includes an unique
+identifier and is the topic of this post.
 
 .. _SendGrid: https://sendgrid.com
 .. _webhook: https://sendgrid.com/docs/API_Reference/Webhooks/event.html
