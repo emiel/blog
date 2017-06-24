@@ -1,4 +1,4 @@
-Decoding the SendGrid event ID
+Decoding the SendGrid Event ID
 ##############################
 
 :date: 2017-06-11 21:30
@@ -7,17 +7,17 @@ Decoding the SendGrid event ID
 :authors: Emiel van de Laar
 
 SendGrid_ is a managed email delivery service. The service is able to emit
-notifications (via a webhook_) when something interesting happens while
-processing your email. When enabled, the webhook will POST a collection of JSON
-encoded events to a URL of your choice. Each event includes an unique
-identifier and is the topic of this post.
+notifications when something interesting happens while processing your email.
+When enabled, the webhook_ will POST a collection of JSON encoded events to a
+URL of your choice. Each event includes a unique identifier and is the topic of
+this post.
 
 .. _SendGrid: https://sendgrid.com
 .. _webhook: https://sendgrid.com/docs/API_Reference/Webhooks/event.html
 
-Note: The following are purely my observations and corrections are welcome.
+*Note: The following are purely my observations and corrections are welcome.*
 
-Let's have a look at a sample JSON event, particularly the *sg_event_id*
+Let's have a look at an example JSON event, particularly the **sg_event_id**
 property.
 
 .. code-block:: javascript
@@ -42,13 +42,13 @@ Quick UUID Intro
 ----------------
 
 While investigating the *sg_event_id* I was tipped that these were actually
-UUIDs. A UUID_ is 128 bits (16 octets) long and usually presented as text. If
-you're not familiar with UUIDs its best to go give the Wikipedia page a quick
-glance before continuing.
+UUIDs. A UUID_ is 128 bit number (16 octets) that is usually presented as text,
+e.g. *f5ac4a1d-703f-487e-a4aa-a6a58aad895d*. If you're not familiar with UUIDs
+I encourage you to give the Wikipedia page a quick glance before continuing.
 
 .. _UUID: https://en.wikipedia.org/wiki/Universally_unique_identifier
 
-22 character Event ID
+22 Character Event ID
 ---------------------
 
 Let's tackle the 22 character format first by poking at it in the Python shell.
@@ -62,9 +62,9 @@ The string looks like it might be Base64_ encoded due to the characters
 alternatives that treat index values 62 and 63 differently and we need to make
 sure we're using the right one. I went through our collection of event ids and
 was able to identify many having both a **minus** and an **underscore**
-character. And so the Base64url_ variant looks like a good candidate.
+character. This indicates the Base64url_ variant is good candidate.
 
-Let's pull in the ``base64`` library and attempt to decode it.
+Let's pull in the ``base64`` library and attempt to decode the event ID.
 
 .. _Base64: https://en.wikipedia.org/wiki/Base64
 .. _Base64url: https://tools.ietf.org/html/rfc4648#section-5
@@ -97,8 +97,8 @@ properly.
    >>> base64.urlsafe_b64decode(buf + '==')
    'h\xce\xeb^\x04\xd8L\xdf\x86\x08tE\xad\xdb\x0f\xfe'
 
-Bingo, we have some bytes! 16 to be exact (you may check using len()). Let's
-also encode as hex to make it a bit more readable.
+Bingo, we have some bytes! Sixteen to be exact (you may check using len()).
+Let's also encode as hex to make it a bit more readable.
 
 .. code-block:: python
 
@@ -121,13 +121,13 @@ That appears to check out.
 48 Character Event ID
 ---------------------
 
-Now lets have a look at the *sg_event_id* having 48 characters.
+Now let's have a look at the *sg_event_id* having 48 characters.
 
 .. code-block:: python
 
    >>> buf = "ZjVhYzRhMWQtNzAzZi00ODdlLWE0YWEtYTZhNThhYWQ4OTVk"
 
-Again this looks like it is Base64 encoded or some variant thereof. Lets just
+Again this looks like it is Base64 encoded [#]_ or some variant thereof. Lets just
 give it a shot.
 
 .. code-block:: python
@@ -135,8 +135,8 @@ give it a shot.
    >>> base64.b64decode(buf)
    'f5ac4a1d-703f-487e-a4aa-a6a58aad895d'
 
-Hey that looks familiar. It appears to be UUIDv4 encoded string. Let's build a
-UUID from the base64 decoded string and see if it checks out.
+Hey that looks familiar. It appears to be a UUIDv4 encoded string. Let's build
+a UUID from the base64 decoded string and see if it checks out.
 
 .. code-block:: python
 
@@ -147,19 +147,18 @@ UUID from the base64 decoded string and see if it checks out.
 
 That checks out as well.
 
-    I was unable to determine if which variant of Base64 used for this format.
-    We've yet to see any special characters outside of a-z, A-Z, 0-9 alphabet.
+.. [#] I was unable to determine if which variant of Base64 used for this
+   format. We've yet to see any special characters outside of A-Z, a-z, 0-9
+   alphabet.
 
 Wrapping Up
 -----------
 
 I've applied the above decoding to all the events we've collected so far and
-every id looks to be a valid UUIDv4 and so I'm fairly confident this is a valid
-decoding of the *sg_event_id*.
-
-I initially asked SendGrid support if they could point me to some documentation
-or clarify the difference in the format. I didn't get a clear answer but did
-mention these were generated by different systems.
+every event id looks to be a valid UUIDv4 thus I'm fairly confident this is a
+valid decoding. I initially asked SendGrid support if they could point me to
+some documentation or clarify the difference in the format. I didn't get a
+clear answer but did mention these were generated by different systems.
 
 Why the SendGrid UUIDs are Base64 encoded is a bit puzzling to me. A UUID
 string is already URL safe because it consists of only the characters 0-9, a-f
@@ -168,6 +167,11 @@ to 22 chars because the underlying 128 bit number is encoded. However, Base64
 encoding a UUID string is going in the wrong direction as it takes you from 32
 chars (UUID string) to 48.
 
-    A final warning: SendGrid offers testing functionality to emit example
-    events. The *sg_event_id* in these events has *24 characters* and is the 22
-    character variant with the padding included.
+The following are a couple of simple implementations of the steps above.
+
+ * `Python <https://gist.github.com/emiel/99e5c103dfffaf05629ca305ff546c18>`_
+ * `Postgres <https://gist.github.com/emiel/49aa93baab83a55f17dca4f7d790a067>`_
+
+A final warning: SendGrid offers testing functionality to emit example
+events. The *sg_event_id* in these events has *24 characters* and is the 22
+character variant with the padding included.
