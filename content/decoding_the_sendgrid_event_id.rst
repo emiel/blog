@@ -15,7 +15,7 @@ this post.
 .. _SendGrid: https://sendgrid.com
 .. _webhook: https://sendgrid.com/docs/API_Reference/Webhooks/event.html
 
-*Note: The following are purely my observations and corrections are welcome.*
+    Note: The following are purely my observations and corrections are welcome.
 
 Let's have a look at an example JSON event, particularly the **sg_event_id**
 property.
@@ -60,7 +60,7 @@ Let's tackle the 22 character format first by poking at it in the Python shell.
 The string looks like it might be Base64_ encoded due to the characters
 (alphabet) used (A-Z, a-z, 0-9). There are a number of Base64 encoding
 alternatives that treat index values 62 and 63 differently and we need to make
-sure we're using the right one. I went through our collection of event ids and
+sure we're using the right one. I went through our collection of event IDs and
 was able to identify many having both a **minus** and an **underscore**
 character. This indicates the Base64url_ variant is good candidate.
 
@@ -127,7 +127,7 @@ Now let's have a look at the *sg_event_id* having 48 characters.
 
    >>> buf = "ZjVhYzRhMWQtNzAzZi00ODdlLWE0YWEtYTZhNThhYWQ4OTVk"
 
-Again this looks like it is Base64 encoded [#]_ or some variant thereof. Lets just
+Again this looks like it is Base64 encoded or some variant thereof. Lets just
 give it a shot.
 
 .. code-block:: python
@@ -138,6 +138,10 @@ give it a shot.
 Hey that looks familiar. It appears to be a UUIDv4 encoded string. Let's build
 a UUID from the base64 decoded string and see if it checks out.
 
+    Note: I was unable to determine which variant of Base64 is used for this
+    format. We've yet to see any special characters outside of A-Z, a-z, 0-9
+    alphabet.
+
 .. code-block:: python
 
    >>> eid = uuid.UUID('f5ac4a1d-703f-487e-a4aa-a6a58aad895d')
@@ -145,11 +149,7 @@ a UUID from the base64 decoded string and see if it checks out.
    UUID('f5ac4a1d-703f-487e-a4aa-a6a58aad895d')
    >>> assert eid.variant == uuid.RFC_4122 and eid.version == 4
 
-That checks out as well.
-
-.. [#] I was unable to determine if which variant of Base64 used for this
-   format. We've yet to see any special characters outside of A-Z, a-z, 0-9
-   alphabet.
+That appears to check out as well.
 
 Wrapping Up
 -----------
@@ -169,8 +169,8 @@ chars (UUID string) to 48.
 
 The following are a couple of simple implementations of the steps above.
 
- * `Python <https://gist.github.com/emiel/99e5c103dfffaf05629ca305ff546c18>`_
- * `Postgres <https://gist.github.com/emiel/49aa93baab83a55f17dca4f7d790a067>`_
+- `Python <https://gist.github.com/emiel/99e5c103dfffaf05629ca305ff546c18>`_
+- `Postgres <https://gist.github.com/emiel/49aa93baab83a55f17dca4f7d790a067>`_
 
 A final warning: SendGrid offers testing functionality to emit example
 events. The *sg_event_id* in these events has *24 characters* and is the 22
