@@ -43,4 +43,3 @@ DISPLAY_PAGES_ON_MENU = False
 DISPLAY_CATEGORIES_ON_MENU = False
 
 # ABOUT_PAGE = '/pages/about.html'
-# themes

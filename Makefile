@@ -66,6 +66,8 @@ html:
 
 clean:
 	[ ! -d $(OUTPUTDIR) ] || rm -rf $(OUTPUTDIR)
+	find $(CURDIR) -type f -name "*.pyc" -delete
+	find $(CURDIR) -type d -name "__pycache__" -delete
 
 regenerate:
 	$(PELICAN) -r $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)

@@ -8,7 +8,7 @@ from __future__ import unicode_literals
 import os
 import sys
 sys.path.append(os.curdir)
-from pelicanconf import *
+from pelicanconf import * # noqa
 
 SITEURL = 'http://emiel.github.io'
 RELATIVE_URLS = False
@@ -20,5 +20,5 @@ DELETE_OUTPUT_DIRECTORY = True
 
 # Following items are often useful when publishing
 
-#DISQUS_SITENAME = ""
-#GOOGLE_ANALYTICS = ""
+# DISQUS_SITENAME = ''
+GOOGLE_ANALYTICS_TRACKING_ID = 'UA-101714479-1'

@@ -136,7 +136,7 @@ give it a shot.
    'f5ac4a1d-703f-487e-a4aa-a6a58aad895d'
 
 Hey that looks familiar. It appears to be a UUIDv4 encoded string. Let's build
-a UUID from the base64 decoded string and see if it checks out.
+a UUID from the Base64 decoded string and see if it checks out.
 
     Note: I was unable to determine which variant of Base64 is used for this
     format. We've yet to see any special characters outside of A-Z, a-z, 0-9
@@ -167,10 +167,11 @@ to 22 chars because the underlying 128 bit number is encoded. However, Base64
 encoding a UUID string is going in the wrong direction as it takes you from 32
 chars (UUID string) to 48.
 
-The following are a couple of simple implementations of the steps above.
+This excercise has resulted in a `Python implementation`_ and a `Postgres
+implementation`_.  Feel free to use them.
 
-- `Python <https://gist.github.com/emiel/99e5c103dfffaf05629ca305ff546c18>`_
-- `Postgres <https://gist.github.com/emiel/49aa93baab83a55f17dca4f7d790a067>`_
+.. _`Python implementation`: https://gist.github.com/emiel/99e5c103dfffaf05629ca305ff546c18
+.. _`Postgres implementation`: https://gist.github.com/emiel/49aa93baab83a55f17dca4f7d790a067
 
 A final warning: SendGrid offers testing functionality to emit example
 events. The *sg_event_id* in these events has *24 characters* and is the 22
