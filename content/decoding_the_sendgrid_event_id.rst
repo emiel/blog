@@ -77,20 +77,30 @@ Let's pull in the ``base64`` library and attempt to decode the event ID.
    TypeError: Incorrect padding
 
 Python gives us an ``Incorrect padding`` error. We'll skip a thorough break
-down of Base64 padding but of interest is the fact that in some circumstances
-padding_ is not required. If one knows the size of the data that has been
-encoded the padding may be left off.
+down of Base64 padding_ but of interest is the fact that some implementations
+discard the padding in the output because the number of missing bytes can be
+determined by the number of Base64 characters. In addition
+`RFC4648 § 5 <https://tools.ietf.org/html/rfc4648#section-5>`__ gives us a
+hint as to why one might do that.
 
-.. _padding: https://tools.ietf.org/html/rfc4648#section-3.2
+   The pad character "=" is typically percent-encoded when used in an
+   URI [9], but if the data length is known implicitly, this can be
+   avoided by skipping the padding; ...
+
+.. _padding: https://en.wikipedia.org/wiki/Base64#Output_padding
+
+Let's see if we can figure out how much padding might have been discarded.
 
 .. code-block:: python
 
    >>> len(buf) % 4
    2
 
-So according to the spec we need to add two padding characters, i.e. "==". We
-append the padding to our *sg_event_id* and see if we can now decode it
-properly.
+   # '[aM7r][XgTY][TN-G][CHRF][rdsP][_g  ]'
+   #         discarded padding --------^^
+
+So according to the spec we need to append two padding characters, i.e. "==",
+to our our *sg_event_id*. Will it now decode properly?
 
 .. code-block:: python
 
