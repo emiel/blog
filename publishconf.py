@@ -10,7 +10,7 @@ import sys
 sys.path.append(os.curdir)
 from pelicanconf import * # noqa
 
-SITEURL = 'http://emiel.github.io'
+SITEURL = 'https://emiel.github.io'
 RELATIVE_URLS = False
 
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
