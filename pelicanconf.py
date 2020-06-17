@@ -1,44 +1,50 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*- #
-from __future__ import unicode_literals
+#!/usr/bin/env python3
 
-AUTHOR = 'Emiel van de Laar'
-SITENAME = 'Galloping Alligator'
-SITEURL = ''
+AUTHOR = "Emiel van de Laar"
+SITENAME = "Galloping Alligator"
+SITEURL = ""
 
-PATH = 'content'
+PATH = "content"
 
-TIMEZONE = 'Europe/Amsterdam'
+TIMEZONE = "Europe/Amsterdam"
 
-DEFAULT_LANG = 'en'
+DEFAULT_LANG = "en"
 
 # Feed generation is usually not desired when developing
-FEED_ALL_ATOM = None
-CATEGORY_FEED_ATOM = None
-TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
+CATEGORY_FEED_ATOM = None
+FEED_ALL_ATOM = None
+TRANSLATION_FEED_ATOM = None
 
 # Blogroll
 LINKS = [
-    ('Pelican', 'http://getpelican.com/'),
-    ('Python.org', 'http://python.org/'),
-    ('Jinja2', 'http://jinja.pocoo.org/'),
-    ('You can modify those links in your config file', '#'),
+    ("Pelican", "https://getpelican.com/"),
+    ("Python.org", "https://python.org/"),
+    ("Jinja2", "https://jinja.pocoo.org/"),
+    ("You can modify those links in your config file", "#"),
 ]
 
 # Social widget
 SOCIAL = [
-    ('gemiel@', 'mailto:gemiel@gmail.com'),
-    ('GitHub', 'https://github.com/emiel'),
+    ("gemiel@", "mailto:gemiel@gmail.com"),
+    ("GitHub", "https://github.com/emiel"),
 ]
 
 DEFAULT_PAGINATION = False
 
-# Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
+STATIC_PATHS = [
+    "extra/robots.txt",
+]
 
-THEME = 'themes/mineral'
+EXTRA_PATH_METADATA = {
+    "extra/robots.txt": {"path": "robots.txt"},
+}
+
+# Uncomment following line if you want document-relative URLs when developing
+# RELATIVE_URLS = True
+
+THEME = "themes/mineral"
 
 # Pelican theme settings
 
