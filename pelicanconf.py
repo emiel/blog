@@ -34,10 +34,12 @@ SOCIAL = [
 DEFAULT_PAGINATION = False
 
 STATIC_PATHS = [
+    "extra/CNAME",
     "extra/robots.txt",
 ]
 
 EXTRA_PATH_METADATA = {
+    "extra/CNAME": {"path": "CNAME"},
     "extra/robots.txt": {"path": "robots.txt"},
 }
 
