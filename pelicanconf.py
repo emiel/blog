@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+from datetime import datetime
+
 AUTHOR = "Emiel van de Laar"
 SITENAME = "Galloping Alligator"
 SITEURL = ""
@@ -55,3 +57,5 @@ DISPLAY_PAGES_ON_MENU = False
 DISPLAY_CATEGORIES_ON_MENU = False
 
 # ABOUT_PAGE = '/pages/about.html'
+
+COPYRIGHT_YEAR = f"2014&ndash;{datetime.now().year}"
