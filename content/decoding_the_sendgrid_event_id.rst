@@ -6,7 +6,6 @@ Decoding the SendGrid Event ID
 :category: tech
 :status: published
 :authors: Emiel van de Laar
-:description: An in depth look at decoding the SendGrid webhook Event ID
 
 SendGrid_ is a managed email delivery service. The service is able to emit
 notifications when something interesting happens while processing your email.

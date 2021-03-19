@@ -10,7 +10,11 @@ PATH = "content"
 
 TIMEZONE = "Europe/Amsterdam"
 
+DEFAULT_DATE_FORMAT = "%d %b %Y"
+
 DEFAULT_LANG = "en"
+
+SUMMARY_MAX_LENGTH = 42
 
 # Feed generation is usually not desired when developing
 AUTHOR_FEED_ATOM = None
