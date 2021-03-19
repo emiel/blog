@@ -1,3 +1,2 @@
-Pygments
 ghp-import
 pelican
