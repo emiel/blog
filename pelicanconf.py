@@ -4,6 +4,7 @@ from datetime import datetime
 
 AUTHOR = "Emiel van de Laar"
 SITENAME = "Galloping Alligator"
+SITESUBTITLE = "My thoughts on tech and other things..."
 SITEURL = ""
 
 PATH = "content"
