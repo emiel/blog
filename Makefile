@@ -80,5 +80,8 @@ github: publish
 	ghp-import -m "Generate Pelican site" -b $(GITHUB_PAGES_BRANCH) $(OUTPUTDIR)
 	git push git@github.com:emiel/emiel.github.io.git $(GITHUB_PAGES_BRANCH):main --force
 
+upgrade-deps:
+	pip-compile --upgrade --generate-hashes ./requirements.in
+	pip-sync requirements.txt
 
-.PHONY: html help clean regenerate serve serve-global devserver stopserver publish github
+.PHONY: html help clean regenerate serve serve-global devserver stopserver publish github upgrade-deps
