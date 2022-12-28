@@ -3,17 +3,32 @@
 from datetime import datetime
 
 AUTHOR = "Emiel van de Laar"
+
 SITENAME = "Galloping Alligator"
-SITESUBTITLE = "My thoughts on tech and other things..."
+
 SITEURL = ""
 
 PATH = "content"
 
 TIMEZONE = "Europe/Amsterdam"
 
-DEFAULT_DATE_FORMAT = "%d %b %Y"
+DEFAULT_DATE_FORMAT = "%Y-%m-%d"
 
 DEFAULT_LANG = "en"
+
+DEFAULT_METADATA = {
+    'status': 'draft',
+}
+
+MENUITEMS = [
+    ("Writing", "/"),
+    ("About", "/pages/about.html"),
+    ("Uses", "/pages/uses.html"),
+]
+
+DISPLAY_PAGES_ON_MENU = False
+
+DISPLAY_CATEGORIES_ON_MENU = False
 
 SUMMARY_MAX_LENGTH = 42
 
@@ -52,11 +67,5 @@ EXTRA_PATH_METADATA = {
 THEME = "themes/mineral"
 
 # Pelican theme settings
-
-# SITESUBTITLE = ''
-DISPLAY_PAGES_ON_MENU = False
-DISPLAY_CATEGORIES_ON_MENU = False
-
-# ABOUT_PAGE = '/pages/about.html'
 
 COPYRIGHT_YEAR = f"2014&ndash;{datetime.now().year}"

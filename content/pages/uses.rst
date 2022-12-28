@@ -1,11 +1,13 @@
-Toolbox
-=======
+Uses
+====
 
-:status: draft
+:status: published
 
-command line
-------------
-* `bat <https://github.com/sharkdp/bat>`_ - syntax highlighed preview
+Some continually changing list of the tools I rely on.
+
+CLI
+---
+* `bat <https://github.com/sharkdp/bat>`_ - syntax highlighted preview
 * `direnv <https://direnv.net>`_
 * `fzf <https://github.com/junegunn/fzf>`_ - fuzzy finder
 * `mdbook <https://rust-lang.github.io/mdBook/>`_
@@ -66,7 +68,6 @@ Python
 - pyright
 - pyupgrade
 - ruff
-- vim
 
 Kubernetes/Docker
 -----------------
