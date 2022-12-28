@@ -25,17 +25,13 @@ FEED_ALL_ATOM = None
 TRANSLATION_FEED_ATOM = None
 
 # Blogroll
-LINKS = [
-    ("Pelican", "https://getpelican.com/"),
-    ("Python.org", "https://python.org/"),
-    ("Jinja2", "https://jinja.pocoo.org/"),
-    ("You can modify those links in your config file", "#"),
-]
+LINKS = []
 
-# Social widget
+# Social links
 SOCIAL = [
-    ("gemiel@", "mailto:gemiel@gmail.com"),
     ("GitHub", "https://github.com/emiel"),
+    ("Mastodon", "https://hachyderm.io/@emiel"),
+    ("e-mail", "mailto:gemiel@gmail.com"),
 ]
 
 DEFAULT_PAGINATION = False
