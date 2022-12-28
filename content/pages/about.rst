@@ -1,4 +1,7 @@
 About
 =====
 
-Random tech blog. Let's see if I keep at it. :)
+:status: published
+
+Emiel van de Laar is a product oriented developer interested in programming
+language theory and product management.
