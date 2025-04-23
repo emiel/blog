@@ -1,0 +1,9 @@
+[project]
+name = "blog"
+readme = "README.md"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "ghp-import>=2.1.0",
+    "pelican>=4.10.2",
+]
