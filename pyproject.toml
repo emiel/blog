@@ -2,8 +2,8 @@
 name = "blog"
 readme = "README.md"
 version = "0.1.0"
-requires-python = ">=3.13"
+requires-python = ">=3.14"
 dependencies = [
-    "ghp-import>=2.1.0",
-    "pelican>=4.10.2",
+    "ghp-import==2.1.0",
+    "pelican==4.11.0",
 ]
