@@ -9,10 +9,12 @@ CLI
 ---
 * `bat <https://github.com/sharkdp/bat>`_ - syntax highlighted preview
 * `direnv <https://direnv.net>`_
-* `fzf <https://github.com/junegunn/fzf>`_ - fuzzy finder
+* `fzf <https://junegunn.github.io/fzf/>`_ - fuzzy finder
 * `mdbook <https://rust-lang.github.io/mdBook/>`_
-* `mtr <https://github.com/traviscross/mtr>`_
-* `ranger <https://ranger.github.io>`_
+* `mise-en-place <https://mise.jdx.dev/>`_
+* `mtr <https://www.bitwizard.nl/mtr/>`_
+* `neovim <https://neovim.io/>`_
+* `ranger <https://ranger.fm>`_
 * `ripgrep <https://github.com/BurntSushi/ripgrep>`_
 * `shellcheck <https://www.shellcheck.net>`_
 * `tmux <https://github.com/tmux/tmux/wiki>`_
