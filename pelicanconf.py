@@ -17,7 +17,7 @@ DEFAULT_DATE_FORMAT = "%Y-%m-%d"
 DEFAULT_LANG = "en"
 
 DEFAULT_METADATA = {
-    'status': 'draft',
+    "status": "draft",
 }
 
 MENUITEMS = [
@@ -44,9 +44,10 @@ LINKS = []
 
 # Social links
 SOCIAL = [
-    ("GitHub", "https://github.com/emiel"),
-    ("Mastodon", "https://hachyderm.io/@emiel"),
-    ("e-mail", "mailto:gemiel@gmail.com"),
+    ("bluesky", "https://bsky.app/profile/ttyout.net"),
+    ("mastodon", "https://hachyderm.io/@emiel"),
+    ("github", "https://github.com/emiel"),
+    ("email", "mailto:gemiel@gmail.com"),
 ]
 
 DEFAULT_PAGINATION = False
